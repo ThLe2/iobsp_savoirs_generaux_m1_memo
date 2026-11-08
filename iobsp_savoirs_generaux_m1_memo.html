@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fiche mémo — Le contexte de l&#x27;activité d&#x27;IOBSP</title>
+<style>
+:root{--prune:#8C1E70;--prune-fonce:#5E1349;--prune-clair:#F4E6EE;--accent:#C77BAA;
+ --vert:#283C28;--gris:#3C3C3C;--gris-moyen:#8A7A85;--filet:#E8DCE5;--creme:#FAF6F8;
+ --ok:#2F7A4F;--ko:#B23B3B;--amb:#B5852A;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--creme);color:var(--gris);
+ font-family:"Nunito","Segoe UI",Helvetica,Arial,sans-serif;font-size:16px;line-height:1.62}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px 60px}
+header.bandeau{background:var(--prune-fonce);color:#fff;padding:18px 0;border-bottom:4px solid var(--accent)}
+header.bandeau .wrap{padding-bottom:0}
+.chapitre{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#EAD3E3}
+.chapitre span{color:var(--accent);margin:0 6px}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:27px;line-height:1.25;margin:8px 0 4px;color:#fff}
+.sous{color:#EAD3E3;font-size:14.5px;margin:0}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:20px;color:var(--prune-fonce);
+ margin:34px 0 0;padding-bottom:8px;border-bottom:2px solid var(--filet)}
+h2 .num{color:var(--accent);margin-right:8px}
+h3{font-size:15px;color:var(--vert);margin:20px 0 8px;letter-spacing:.02em}
+.carte{background:#fff;border:1px solid var(--filet);border-radius:10px;padding:20px 22px;margin:18px 0;
+ box-shadow:0 1px 2px rgba(94,19,73,.05)}
+.enc{background:var(--prune-clair);border-left:5px solid var(--prune);padding:14px 18px;
+ border-radius:0 8px 8px 0;margin:18px 0;font-size:15.2px}
+.enc .t{display:block;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;
+ font-weight:800;color:var(--prune-fonce);margin-bottom:6px}
+.enc.al{background:#FBF4F4;border-left-color:var(--ko)}.enc.al .t{color:var(--ko)}
+.enc.ci{background:#FCF8F0;border-left-color:var(--amb)}.enc.ci .t{color:#8A6418}
+.situ{background:#FCF9FB;border:1px dashed var(--filet);border-radius:8px;padding:16px 18px;margin:16px 0;font-size:15.2px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+.duo>div{background:#fff;border:1px solid var(--filet);border-radius:9px;padding:15px 17px;font-size:14.8px}
+.duo .h{font-weight:800;color:var(--prune-fonce);margin-bottom:7px;font-size:14.5px}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+.tri>div{background:#fff;border:1px solid var(--filet);border-radius:9px;padding:14px 15px;font-size:14.3px}
+.quad{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
+.quad>div{background:#fff;border:1px solid var(--filet);border-radius:9px;padding:12px 13px;font-size:13.6px}
+.quad .h{font-weight:800;color:var(--prune-fonce);margin-bottom:6px;font-size:13px;
+ text-transform:uppercase;letter-spacing:.04em}
+.tri .h{font-weight:800;color:var(--prune-fonce);margin-bottom:6px;font-size:13.5px;
+ text-transform:uppercase;letter-spacing:.05em}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14.8px;background:#fff}
+th,td{border:1px solid var(--filet);padding:9px 12px;text-align:left}
+thead th{background:var(--prune-clair);color:var(--prune-fonce);font-size:13.5px}
+tbody th{font-weight:600;color:var(--gris)}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.tot td,tr.tot th{background:#FBF3F8;font-weight:800;color:var(--prune-fonce)}
+.dl{display:inline-flex;align-items:center;gap:9px;background:var(--prune);color:#fff;text-decoration:none;
+ padding:11px 20px;border-radius:8px;font-weight:700;font-size:15px;margin:20px 0 4px}
+.dl:hover{background:var(--prune-fonce)}
+ol.q{padding-left:0;list-style:none;counter-reset:q}
+ol.q>li{margin:16px 0;padding-left:38px;position:relative}
+ol.q>li::before{counter-increment:q;content:counter(q);position:absolute;left:0;top:1px;
+ width:26px;height:26px;border-radius:50%;background:var(--prune-clair);color:var(--prune-fonce);
+ font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+b,strong{color:var(--vert)}
+footer{text-align:center;font-size:12.5px;color:var(--gris-moyen);padding:26px 18px 12px;
+ border-top:1px solid var(--filet);margin-top:44px}
+@media(max-width:860px){.quad{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.duo,.tri,.quad{grid-template-columns:1fr}h1{font-size:22px}}
+@media print{body{background:#fff}.dl{display:none}header.bandeau{background:#5E1349 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+td{vertical-align:top}td:first-child{white-space:nowrap}.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}.tri>div{background:#fff;border:1px solid var(--filet);border-radius:9px;padding:14px 15px;font-size:14.3px}.tri .h,.duo .h{font-weight:800;color:var(--prune-fonce);margin-bottom:6px;font-size:13.5px;text-transform:uppercase;letter-spacing:.05em}.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}.duo>div{background:#fff;border:1px solid var(--filet);border-radius:9px;padding:15px 17px;font-size:14.8px}@media(max-width:640px){.tri,.duo{grid-template-columns:1fr}}.enc,tr,.tri,.duo{break-inside:avoid}</style></head>
+<body>
+<header class="bandeau"><div class="wrap">
+ <div class="chapitre">IOBSP · Savoirs généraux <span>/</span> Module 1</div><h1>Le contexte de l'activité d'IOBSP</h1><p class="sous">Fiche mémo — acteurs, définition, seuils, mandat</p>
+</div></header>
+<div class="wrap">
+<a class="dl" href="IOBSP_SG_M1_Fiche_memo.pdf" download>⬇ Télécharger la fiche mémo (PDF)</a>
+<h2><span class="num">1 ·</span>Qui fait quoi dans le crédit</h2>
+<div class="carte">
+<table><thead><tr><th>Acteur</th><th>Ce qu'il peut faire</th></tr></thead><tbody>
+<tr><td><b>Établissement de crédit</b></td><td>Réaliser des opérations de banque à titre habituel ; il reçoit des fonds remboursables du public. Agrément ACPR.</td></tr>
+<tr><td><b>Société de financement</b></td><td>Accorder des crédits, sans recevoir de fonds remboursables du public. Agrément ACPR.</td></tr>
+<tr><td><b>Établissement de paiement</b></td><td>Fournir des services de paiement ; le crédit n'y est qu'accessoire et encadré.</td></tr>
+<tr><td><b>Établissement de monnaie électronique</b></td><td>Émettre et gérer de la monnaie électronique ; il peut fournir des services de paiement.</td></tr>
+<tr><td><b>Entreprise d'assurance</b></td><td>Couvrir les risques ; elle intervient dans le crédit par l'assurance emprunteur et les cautions.</td></tr>
+</tbody></table>
+<div class="enc"><span class="t">LE POINT DE DÉPART</span>L'IOBSP n'est aucun de ces acteurs : il ne prête pas, ne reçoit pas de fonds du public, n'assure pas. Il <b>met en relation</b>. L'une au moins des deux personnes mises en relation est un établissement agréé (art. L. 519-2 CMF).</div></div>
+<h2><span class="num">2 ·</span>L'opération de banque : trois blocs</h2>
+<div class="carte">
+<p>L'article L. 311-1 du code monétaire et financier définit l'opération de banque par trois blocs, et trois seulement :</p>
+<ol class="q"><li><b>La réception de fonds remboursables du public</b> : comptes de dépôt, livrets.</li><li><b>Les opérations de crédit</b> : prêt, découvert, crédit-bail, et l'engagement par signature (la caution).</li><li><b>Les services bancaires de paiement</b> : mise à disposition et gestion des moyens de paiement.</li></ol>
+<div class="enc ci"><span class="t">À NE PAS CONFONDRE</span>Les <b>services de paiement</b> de l'article L. 314-1 forment un ensemble distinct (virements, prélèvements, cartes, transmission de fonds, initiation de paiement…), approfondi dans le parcours consacré aux services de paiement. Un IOBSP immatriculé en services de paiement <b>présente</b> le service : il ne l'exécute jamais.</div></div>
+<h2><span class="num">3 ·</span>La définition de l'IOBSP</h2>
+<div class="carte">
+<div class="enc"><span class="t">ARTICLE L. 519-1 CMF</span>« Est intermédiaire en opérations de banque et en services de paiement toute personne qui exerce, à titre habituel, contre une rémunération ou toute autre forme d'avantage économique, l'intermédiation en opérations de banque et en services de paiement, sans se porter ducroire ou qui fournit un service de conseil au sens de l'article L. 519-1-1. »</div>
+<table><thead><tr><th>Critère</th><th>Ce qu'il recouvre</th></tr></thead><tbody>
+<tr><td><b>Intermédiation</b></td><td>Présenter, proposer ou aider à conclure — ou effectuer les travaux et conseils préparatoires.</td></tr>
+<tr><td><b>À titre habituel</b></td><td>La répétition, dans le cadre d'une organisation. Ni volume important, ni activité principale exigés.</td></tr>
+<tr><td><b>Avantage économique</b></td><td>Commission, honoraires, mais aussi avantage indirect ou non monétaire : apport d'affaires réciproque, remise, avantage en nature.</td></tr>
+<tr><td><b>Sans ducroire</b></td><td>Ne pas garantir la bonne fin de l'opération.</td></tr>
+</tbody></table>
+<div class="enc al"><span class="t">LES QUATRE CRITÈRES SONT CUMULATIFS</span>Un seul manque : hors statut. Tous réunis : IOBSP, que la personne l'ait voulu ou non. Celui qui se porte ducroire sort de la définition — et son engagement par signature est une opération de crédit qu'il n'a pas le droit de réaliser.</div></div>
+<h2><span class="num">4 ·</span>Qui n'est pas IOBSP</h2>
+<div class="carte">
+<div class="tri"><div><div class="h">Les établissements</div>et leurs salariés : ils distribuent leurs propres produits, ils n'intermédient pas. Leurs salariés restent soumis au code de la consommation et à la formation de leur établissement.</div><div><div class="h">Professions réglementées</div>Notaires, avocats, dans le cadre de leur activité réglementée.</div><div><div class="h">Indicateur d'affaires</div>Art. R. 519-5 : il transmet des coordonnées, sans présenter ni proposer. Il peut percevoir une commission d'apport.</div></div>
+<div class="enc al"><span class="t">UNE FRONTIÈRE TRÈS FINE</span>Dès que l'indicateur évoque un taux, commente une mensualité ou remet une simulation, il présente : il devient IOBSP. D'où une convention d'apport écrite qui délimite ce qu'il a le droit de dire.</div></div>
+<h2><span class="num">5 ·</span>Les seuils — et ce qui les annule</h2>
+<div class="carte">
+<p>L'article R. 519-2, 1° dispense d'immatriculation celui dont l'intermédiation est <b>complémentaire</b> aux biens ou services qu'il fournit (concessionnaire, vendeur de cuisines…), tant qu'il reste sous les seuils fixés par l'<b>arrêté du 1er mars 2012</b>, modifié par l'arrêté du 7 août 2026 :</p>
+<table><thead><tr><th>Activité</th><th>Seuils</th></tr></thead><tbody>
+<tr><td>Autres opérations de banque</td><td><b>20 opérations par an</b> ou <b>200 000 €</b> de montant annuel</td></tr>
+<tr><td>Services de paiement</td><td><b>20 opérations par an</b></td></tr>
+<tr><td>Paiement fractionné et crédits de courte durée (art. L. 312-4-1 C. consom.)</td><td><b>1 000 opérations par an</b> ou <b>500 000 €</b> de montant annuel — à compter du 20 novembre 2026 (ordonnance n° 2025-880 du 3 septembre 2025, décret n° 2026-105 du 19 février 2026, arrêté du 7 août 2026)</td></tr>
+</tbody></table>
+<div class="enc"><span class="t">LA NUANCE QUI FAIT LA QUESTION</span>La dispense joue tant que l'activité « n'excède pas l'un des seuils » (art. R. 519-2, 1°) : il faut dépasser <b>LES DEUX</b>, le nombre et le montant, pour la perdre. 25 dossiers pour 150 000 €, ou 12 dossiers pour 300 000 €, restent dispensés. Appréciation au 1er janvier, sur l'année civile écoulée ; en cas de franchissement, six mois pour se mettre en conformité.</div>
+<div class="duo"><div><div class="h">Le démarchage annule la dispense</div>Toute personne qui recourt au démarchage pour l'intermédiation est IOBSP, sans considération de seuil. À compter du 20 novembre 2026, la dispense ne bénéficie pas non plus aux grandes entreprises pour le crédit à la consommation.</div><div><div class="h">Immobilier, regroupement, prêt viager : aucun seuil</div>Pour le crédit immobilier, le regroupement de crédits et le prêt viager hypothécaire, la dispense ne s'applique jamais : une activité habituelle suffit.</div></div></div>
+<h2><span class="num">6 ·</span>Le mandat et ses limites</h2>
+<div class="carte">
+<table><thead><tr><th>Le mandat autorise</th><th>Le mandat n'autorise jamais</th></tr></thead><tbody>
+<tr><td>Présenter les produits du mandant</td><td>Décider de l'octroi du crédit</td></tr>
+<tr><td>Recueillir les informations et les pièces</td><td>Garantir au client l'accord ou un taux définitif</td></tr>
+<tr><td>Remettre les documents précontractuels</td><td>Modifier une offre, un barème, une condition sans accord du mandant</td></tr>
+<tr><td>Accompagner le client jusqu'à la signature</td><td>Encaisser des fonds sans garantie financière</td></tr>
+<tr><td>Utiliser la marque et les outils du mandant, dans les limites fixées</td><td>Percevoir une somme du client avant le versement effectif des fonds (art. L. 519-6)</td></tr>
+</tbody></table></div>
+<h2><span class="num">7 ·</span>Les risques de l'activité</h2>
+<div class="carte">
+<ul style="margin:8px 0 0 18px"><li><b>Non-conformité</b> : défaut d'immatriculation, mandat dépassé, information précontractuelle absente.</li><li><b>Responsabilité civile</b> : manquement au devoir d'information, de conseil ou de mise en garde — réparation souvent au titre de la perte de chance.</li><li><b>Opérationnel</b> : pièce manquante, délai dépassé, dossier refusé.</li><li><b>Réputation</b> : dans un métier de recommandation, le plus coûteux.</li><li><b>Blanchiment</b> : servir, même involontairement, de vecteur (module 5).</li></ul>
+<div class="enc ci"><span class="t">LE RÉFLEXE À INSTALLER</span>Ce que vous ne tracez pas n'existe pas : gardez la preuve de l'information donnée, de la mise en garde et du recueil des besoins.</div></div>
+<h2><span class="num">8 ·</span>Ce qui tombe à l'examen</h2>
+<div class="carte">
+<ol class="q"><li>Les quatre critères de l'article L. 519-1 — et « sans se porter ducroire », souvent oublié.</li><li>L'avantage économique n'a besoin d'être ni monétaire, ni direct.</li><li>Les seuils : il faut dépasser les deux pour perdre la dispense.</li><li>Le démarchage rend IOBSP quels que soient les seuils.</li><li>Transmettre des coordonnées n'est pas présenter : c'est la frontière de l'indicateur d'affaires.</li></ol></div>
+
+<footer>TMK Performances - N° Siret : 49841924100027 - Code NAF : 8559A</footer>
+</div>
+</body></html>
